@@ -1,0 +1,215 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8" /> 
+<meta name="viewport" content="width=device-width, initial-scale=1" /> 
+<title>Samarpana Run Registration</title> 
+<style> 
+  body { 
+    font-family: Arial, sans-serif; 
+    background: white; 
+    margin: 0; padding: 20px; 
+    color: black; font-size: 14px; 
+  } 
+  .header-orange, .header-green, .header-white { 
+    text-align: center; font-weight: bold; padding: 8px 0; font-size: 14px; 
+  } 
+  .header-orange {background: orange; color: white; border-radius: 5px 5px 0 0;} 
+  .header-green {background: green; color: white;} 
+  .header-white {background: white; color: black;} 
+  .datetime { 
+    text-align: center; font-size: 12px; 
+    margin: 5px 0 10px; font-weight: normal; color: grey; 
+  } 
+  .registration-form { 
+    max-width: 800px; background: white; margin: 0 auto; 
+    border-radius: 0 0 10px 10px; padding: 20px 25px 25px; 
+    box-shadow: 0 0 12px rgb(0 0 0 / 0.15); 
+  } 
+  .form-row { 
+    display: flex; gap: 20px; margin-bottom: 15px; 
+  } 
+  .form-row.single {display: block;} 
+  .form-row label { 
+    flex: 1 0 130px; font-weight: 600; padding-top: 6px; 
+  } 
+  .form-row input[type=text], 
+  .form-row input[type=email], 
+  .form-row input[type=tel], 
+  .form-row input[type=date], 
+  .form-row select { 
+    flex: 2 1 300px; padding: 8px 10px; 
+    border: 1px solid #b9d3ad; border-radius: 5px; 
+    box-sizing: border-box; font-size: 14px; 
+  } 
+  table { 
+    width: 100%; border-collapse: collapse; margin-bottom: 15px; 
+    font-size: 13px; background: #eaf1df; border: 1px solid #ddd; 
+  } 
+  th, td { 
+    border: 1px solid #b9d3ad; padding: 8px 12px; 
+    text-align: center; color: #2a2a2a; font-weight: normal; 
+  } 
+  th {background: #b9d3ad; font-weight: 600;} 
+  .checkbox-label { 
+    display: flex; align-items: center; gap: 8px; 
+    font-size: 13px; margin-bottom: 20px; color: #222; 
+  } 
+  button { 
+    border-radius: 5px; padding: 8px 16px; font-weight: 600; 
+    cursor: pointer; min-width: 130px; border: 1.5px solid transparent; 
+    transition: all 0.3s ease; font-size: 14px; 
+  } 
+  .btn-reset { 
+    background: white; border-color: #e55353; color: #e55353; 
+    margin-right: 10px; 
+  } 
+  .btn-reset:hover { 
+    background: #e55353; color: white; 
+  } 
+  .btn-submit { 
+    background: white; border-color: #2649ee; color: #2649ee; 
+  } 
+  .btn-submit:hover { 
+    background: #2649ee; color: white; 
+  } 
+  @media (max-width: 700px) { 
+    .form-row { 
+      flex-direction: column; 
+    } 
+    .form-row label, .form-row input, .form-row select { 
+      flex: none; width: 100%; 
+    } 
+    button { 
+      width: 100%; margin-bottom: 10px; 
+    } 
+    .button-row { 
+      display: flex; flex-direction: column; 
+    } 
+  } 
+</style> 
+</head> 
+<body> 
+  <div class="header-orange">Samarpana Run</div> 
+  <div class="header-white">For the Indian Army!</div> 
+  <p id="datetime" class="datetime"></p> 
+  <div class="header-green">Registration Form</div> 
+ 
+  <form id="marathonForm" class="registration-form"> 
+    <div class="form-row"> 
+      <label for="fullname">Full Name *</label> 
+      <input type="text" id="fullname" name="fullname" placeholder="e.g., Angelina 
+George" required /> 
+      <label for="email">Email *</label> 
+      <input type="email" id="email" name="email" placeholder="e.g., 
+angelina@college.edu" required /> 
+    </div> 
+ 
+    <div class="form-row"> 
+      <label for="mobile">Mobile Number *</label> 
+      <input type="tel" id="mobile" name="mobile" placeholder="e.g., 9876543210" 
+pattern="[0-9]{10}" required /> 
+      <label for="dob">Date of Birth</label> 
+      <input type="date" id="dob" name="dob" /> 
+    </div> 
+ 
+    <div class="form-row"> 
+      <label for="university">University/Organization *</label> 
+      <input type="text" id="university" name="university" placeholder="e.g., PES 
+University" required /> 
+      <label for="usn">USN (College ID) *</label> 
+      <input type="text" id="usn" name="usn" placeholder="e.g., PES1UG24CS999" 
+required /> 
+    </div> 
+ 
+    <div class="form-row"> 
+      <label for="city">City</label> 
+      <input type="text" id="city" name="city" placeholder="e.g., Bengaluru" /> 
+      <label for="state">State</label> 
+      <input type="text" id="state" name="state" placeholder="e.g., Karnataka" /> 
+    </div> 
+ 
+    <div class="form-row single"> 
+      <label for="pincode">Pincode</label> 
+      <input type="text" id="pincode" name="pincode" placeholder="e.g., 560085" /> 
+    </div> 
+ 
+    <div class="form-row single"> 
+      <label for="tshirt">T-shirt Size *</label> 
+      <select id="tshirt" name="tshirt" required> 
+        <option value="">Select size</option> 
+        <option value="XS">XS</option><option value="S">S</option><option 
+value="M">M</option> 
+        <option value="L">L</option><option value="XL">XL</option><option 
+value="XXL">XXL</option><option value="3XL">3XL</option> 
+      </select> 
+    </div> 
+ 
+    <table> 
+      <thead> 
+        <tr><th>Size</th><th>Chest (in)</th><th>Chest (cm)</th><th>Length 
+(cm)</th></tr> 
+      </thead> 
+      <tbody> 
+        <tr><td>XS</td><td>34"</td><td>86cm</td><td>65cm</td></tr> 
+        <tr><td>S</td><td>36"</td><td>91cm</td><td>67cm</td></tr> 
+        <tr><td>M</td><td>38"</td><td>97cm</td><td>70cm</td></tr> 
+        <tr><td>L</td><td>40"</td><td>102cm</td><td>72cm</td></tr> 
+        <tr><td>XL</td><td>42"</td><td>107cm</td><td>75cm</td></tr> 
+        <tr><td>XXL</td><td>44"</td><td>112cm</td><td>77cm</td></tr> 
+        <tr><td>3XL</td><td>46"</td><td>117cm</td><td>79cm</td></tr> 
+      </tbody> 
+    </table> 
+ 
+    <label class="checkbox-label"> 
+      <input type="checkbox" id="terms" required /> 
+      I confirm the information is accurate and agree to the event terms and waiver. 
+    </label> 
+ 
+    <div class="button-row"> 
+      <button type="reset" class="btn-reset">Reset Form</button> 
+      <button type="submit" class="btn-submit">Submit Form</button> 
+    </div> 
+  </form> 
+ 
+<script> 
+  function updateDateTime() { 
+    const now = new Date(); 
+    const options = { year:'numeric', month:'numeric', day:'numeric', hour:'numeric', 
+minute:'numeric', second:'numeric', hour12:true }; 
+    document.getElementById("datetime").innerText = now.toLocaleString('en-US', 
+options); 
+  } 
+  updateDateTime(); 
+  setInterval(updateDateTime, 1000); 
+ 
+  const form = document.getElementById("marathonForm"); 
+  form.addEventListener("submit", e => { 
+    e.preventDefault(); 
+    const fullname = form.fullname.value.trim(), 
+          email = form.email.value.trim(), 
+          mobile = form.mobile.value.trim(), 
+          university = form.university.value.trim(), 
+          usn = form.usn.value.trim(), 
+          tshirt = form.tshirt.value, 
+          terms = form.terms.checked; 
+    if (!fullname || !email || !mobile || !university || !usn || !tshirt) { 
+      alert("Please fill all required fields!"); 
+      return; 
+    } 
+    if (!terms) { 
+      alert("You must agree to the event terms and waiver!"); 
+      return; 
+    } 
+    if (confirm("Are you sure you want to submit the form?")) { 
+      alert("Form submitted successfully! "); 
+      form.reset(); 
+    } 
+  }); 
+ 
+  form.addEventListener("reset", e => { 
+    if (!confirm("Are you sure you want to reset the form?")) e.preventDefault(); 
+  }); 
+</script> 
+</body> 
+</html> 
